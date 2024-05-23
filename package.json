@@ -1,0 +1,21 @@
+{
+  "name": "proyecto-citas",
+  "version": "1.0.0",
+  "description": "Proyecto de Programacion UTN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "UTN",
+    "ISW-811"
+  ],
+  "author": "Gabriel Armando Vargas Muñoz",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.12.12",
+    "prisma": "^5.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
