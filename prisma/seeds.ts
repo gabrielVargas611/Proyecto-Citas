@@ -226,5 +226,59 @@ async function main() {
         }
     ]
   })
-  //
+  //Programaciones
+  await prisma.programaciones.createMany({
+    data: [
+        {
+            fechaInicioDisponible:'2024-05-01',
+            fechaFinalDisponible:'2024-05-31',
+            IdDelServicio: 1
+        },
+        {
+            fechaInicioDisponible:'2024-05-03',
+            fechaFinalDisponible:'2024-05-31',
+            IdDelServicio: 2
+        },
+        {
+            fechaInicioDisponible:'2024-05-05',
+            fechaFinalDisponible:'2024-05-31',
+            IdDelServicio: 3
+        },
+        {
+            fechaInicioDisponible:'2024-05-01',
+            fechaFinalDisponible:'2024-05-20',
+            IdDelServicio: 4
+        },
+        {
+            fechaInicioDisponible:'2024-05-01',
+            fechaFinalDisponible:'2024-05-30',
+            IdDelServicio: 5
+        },
+        {
+            fechaInicioDisponible:'2024-05-01',
+            fechaFinalDisponible:'2024-05-06',
+            IdDelServicio: 6
+        },
+        {
+            fechaInicioDisponible:'2024-05-01',
+            fechaFinalDisponible:'2024-05-15',
+            IdDelServicio: 7
+        },
+        {
+            fechaInicioDisponible:'2024-05-01',
+            fechaFinalDisponible:'2024-05-24',
+            IdDelServicio: 8
+        },
+        {
+            fechaInicioDisponible:'2024-05-01',
+            fechaFinalDisponible:'2024-05-19',
+            IdDelServicio: 9
+        },
+        {
+            fechaInicioDisponible:'2024-05-01',
+            fechaFinalDisponible:'2024-05-31',
+            IdDelServicio: 10
+        }
+    ]
+  })
 }
