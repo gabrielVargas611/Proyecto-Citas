@@ -281,4 +281,53 @@ async function main() {
         }
     ]
   })
+  //Usuarios
+  await prisma.usuarios.createMany({
+    data: [
+        {
+            nombreDelUsuario:'admin',
+            claveDelUsuario:'admin',
+        },
+        {
+            nombreDelUsuario:'cisco',
+            claveDelUsuario:'password',
+        },
+        {
+            nombreDelUsuario:'troy',
+            claveDelUsuario:'woodenHorse',
+        },
+        {
+            nombreDelUsuario:'me',
+            claveDelUsuario:'meWithPower',
+        },
+        {
+            nombreDelUsuario:'uncle Ben',
+            claveDelUsuario:'powerResponsability',
+        },
+        {
+            nombreDelUsuario:'BruceWayne',
+            claveDelUsuario:'imBatman',
+        },
+        {
+            nombreDelUsuario:'anakin',
+            claveDelUsuario:'notJediMaster',
+        },
+        {
+            nombreDelUsuario:'steve',
+            claveDelUsuario:'steve',
+        },
+        {
+            nombreDelUsuario:'Masterchief',
+            claveDelUsuario:'Halo',
+        },
+        {
+            nombreDelUsuario:'Napoleon',
+            claveDelUsuario:'waterloo',
+        },
+        {
+            nombreDelUsuario:'ceasar',
+            claveDelUsuario:'imperator',
+        }
+    ]
+  })
 }

@@ -76,7 +76,7 @@ model Auditorias{
   descripcionDeAccion String
   IdDelSolicitante  Int?
   Solicitante Solicitantes? @relation("AuditoriaConSolicitante", fields: [IdDelSolicitante], references: [solicitantesId])
-  IdDelUsuario Int
+  IdDelUsuario Int?
   Usuario Usuarios? @relation("AuditoriaConUsuario", fields: [IdDelUsuario], references: [usuariosID])
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
