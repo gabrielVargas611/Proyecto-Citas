@@ -13,7 +13,7 @@ class Servicios {
     try {
       resultado = await prisma.servicios.create({
         data: {
-        nombreDelServicio: Provincia,
+        nombreDelServicio: Servicio,
         descripcionDelServicio: Descripcion,
         telefonoDeContacto: Telefono,
         correoDeContacto: Correo,
