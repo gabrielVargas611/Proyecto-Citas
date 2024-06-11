@@ -1,6 +1,6 @@
 const express = require("express");
 
-const ServicioProvincias = require("./../services/programaciones.js");
+const ServicioProgramaciones = require("./../services/programaciones.js");
 const Programaciones = new ServicioProgramaciones();
 
 const Router = express.Router();
