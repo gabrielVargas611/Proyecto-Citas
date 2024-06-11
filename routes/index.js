@@ -1,7 +1,7 @@
 
 
 function routerAPI(app){
-    app.use('/provincias',routerProvincias);
+    app.use('/',);
 }
 
 module.exports = routerAPI;
