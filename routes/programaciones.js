@@ -24,21 +24,24 @@ Router.get("/:programacionesId", async (solicitud, respuesta) => {
 
 //Crear de Programaciones
 Router.post("/", async (solicitud, respuesta) => {
-    const { Programacion } = solicitud.body;
-    respuesta.json(Programacion.Agregar(solicitud.body.Programacion))
+    const { Inicio, Final, Servicio } = solicitud.body;
+    respuesta.json(Programaciones.Agregar(solicitud.body.Inicio,
+      solicitud.body.Final,
+      solicitud.body.Servicio
+    ))
   });
   
   //Borrar una Programacion
   Router.delete("/:programacionesId", async (solicitud, respuesta) => {
-    const { Programacion } = solicitud.params;
-    respuesta.json(Programacion.Borrar(solicitud.body.Programacion));
+    const { programacionesId } = solicitud.params;
+    respuesta.json(Programaciones.Borrar(solicitud.body.programacionesId));
   });
   
   //Actualizar una Provincias
   Router.put("/:programacionesId", async (solicitud, respuesta) => {
     const { programacionesId } = solicitud.params;
-    const { Programacion } = solicitud.body;
-    respuesta.json(Programacion.Actualizar(programacionesId,Programacion));
+    const { Inicio, Final, Servicio } = solicitud.body;
+    respuesta.json(Programaciones.Actualizar(programacionesId,Inicio,Final,Servicio));
   });
   
   module.exports = Router;

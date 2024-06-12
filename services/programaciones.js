@@ -5,14 +5,14 @@ const prisma = new PrismaClient();
 class Programaciones {
   constructor() {}
 
-  async Agregar(Programacion) {
+  async Agregar(Inicio, Final, Servicio) {
     let resultado;
 
     try {
       resultado = await prisma.programaciones.create({
         data: {
-          fechaInicioDisponible: FechaInicio,
-          fechaFinalDisponible: FechaFinal,
+          fechaInicioDisponible: Inicio,
+          fechaFinalDisponible: Final,
           IdDelServicio: Servicio,
         },
       });
@@ -20,37 +20,37 @@ class Programaciones {
       
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se creo la programacion: ${nombre}`
+          descripcionDeAccion: `Se creo una programacion`
         }
       })
 
     } catch (error) {
       console.error(
-        `No se pudo crear la programacion ${Programacion} debido al error: ${error}`
+        `No se pudo crear la programacion debido al error: ${error}`
       );
     }
     return resultado;
   }
 
-  async Actualizar(programacionesId, Programacion) {
+  async Actualizar(programacionesId, Inicio, Final, Servicio) {
     let resultado;
     try {
       resultado = await prisma.programaciones.update({
         where: { programacionesId: parseInt(programacionesId) },
         data: {
-            fechaInicioDisponible: FechaInicio,
-            fechaFinalDisponible: FechaFinal,
+            fechaInicioDisponible: Inicio,
+            fechaFinalDisponible: Final,
             IdDelServicio: Servicio,
         },
       });
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se actualizo la programacion: ${nombre}`
+          descripcionDeAccion: `Se actualizo una programacion`
         }
       })
     } catch (error) {
       console.error(
-        `No se pudo actualizar la programacion ${Programacion} debido al error: ${error}`
+        `No se pudo actualizar la programacion debido al error: ${error}`
       );
     }
     return resultado;
@@ -66,12 +66,12 @@ class Programaciones {
       });
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se borro la programacion: ${nombre}`
+          descripcionDeAccion: `Se borro la programacion`
         }
       })
     } catch (error) {
       console.error(
-        `No se pudo eliminar la programacion ${Programacion} debido al error: ${error}`
+        `No se pudo eliminar la programacion debido al error: ${error}`
       );
     }
     return resultado;
