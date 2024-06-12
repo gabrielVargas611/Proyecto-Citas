@@ -24,21 +24,27 @@ Router.get("/:serviciosId", async (solicitud, respuesta) => {
 
 //Crear un Servicio
 Router.post("/", async (solicitud, respuesta) => {
-    const { Servicios } = solicitud.body;
-    respuesta.json(Servicios.Agregar(solicitud.body.Servicio))
+    const { Servicio, Descripcion, Telefono, Correo, Precio, Experto } = solicitud.body;
+    respuesta.json(Servicios.Agregar(solicitud.body.Servicio,
+      solicitud.body.Descripcion,
+      solicitud.body.Telefono,
+      solicitud.body.Correo,
+      solicitud.body.Precio,
+      solicitud.body.Experto
+    ))
   });
   
   //Borrar un Servicio
   Router.delete("/:serviciosId", async (solicitud, respuesta) => {
-    const { Servicios } = solicitud.params;
-    respuesta.json(Servicios.Borrar(solicitud.body.Servicio));
+    const { serviciosId } = solicitud.params;
+    respuesta.json(Servicios.Borrar(solicitud.body.serviciosId));
   });
   
   //Actualizar un Servicio
   Router.put("/:serviciosId", async (solicitud, respuesta) => {
     const { serviciosId } = solicitud.params;
-    const { Servicios } = solicitud.body;
-    respuesta.json(Servicios.Actualizar(serviciosId,Servicios));
+    const { Servicio, Descripcion, Telefono, Correo, Precio, Experto } = solicitud.body;
+    respuesta.json(Servicios.Actualizar(serviciosId,Servicio,Descripcion,Telefono,Correo,Precio,Experto));
   });
   
   module.exports = Router;

@@ -24,7 +24,7 @@ GET http://localhost/Programaciones/1 HTTP/1.1
 
 ###
 
-GET http://localhost/Servicios/1 HTTP/1.1
+GET http://localhost/Servicios/13 HTTP/1.1
 
 ###
 
@@ -40,20 +40,26 @@ GET http://localhost/Usuarios/1 HTTP/1.1
 
 ###
 
-POST  http://localhost/Programaciones HTTP/1.1
+POST http://localhost/Programaciones HTTP/1.1
 Content-Type: application/json
 {
     "fechaInicioDisponible":"2024-05-9",
     "fechaFinalDisponible": "2024-06-9",
-    "IdDelServicio": 1,
+    "IdDelServicio": 1
 }
 
 ###
 
 POST  http://localhost/Servicios HTTP/1.1
 Content-Type: application/json
-{
 
+{
+    "Servicio": "Test",
+    "Descripcion": "Test",
+    "Telefono": "Test",
+    "Correo": "Test",
+    "Precio": 1,
+    "Experto": "Test"
 }
 
 ###
@@ -89,10 +95,11 @@ Content-Type: application/json
 }
 ###
 
-DELETE http://localhost/Servicios/1 HTTP/1.1
+DELETE http://localhost/Servicios/12 HTTP/1.1
 Content-Type: application/json
-{
 
+{
+    "serviciosId": 12
 }
 ###
 
@@ -127,10 +134,16 @@ Content-Type: application/json
 
 ###
 
-PUT  http://localhost/Servicios HTTP/1.1
+PUT  http://localhost/Servicios/13 HTTP/1.1
 Content-Type: application/json
-{
 
+{
+    "Servicio": "Test2",
+    "Descripcion": "Test2",
+    "Telefono": "Test2",
+    "Correo": "Test2",
+    "Precio": 6,
+    "Experto": "Test"
 }
 
 ###
