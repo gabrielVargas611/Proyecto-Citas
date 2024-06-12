@@ -5,48 +5,48 @@ const prisma = new PrismaClient();
 class Usuarios {
   constructor() {}
 
-  async Agregar(Usuario) {
+  async Agregar(User, Clave) {
     let resultado;
     try {
       resultado = await prisma.usuarios.create({
         data: {
-          nombreDelUsuario: Nombre,
+          nombreDelUsuario: User,
           claveDelUsuario: Clave,
         },
       });
       let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se creo el usuario: ${nombre}`,
+          descripcionDeAccion: `Se creo el usuario`,
         },
       });
     } catch (error) {
       console.error(
-        `No se pudo crear el usuario ${Usuario} debido al error: ${error}`
+        `No se pudo crear el usuario debido al error: ${error}`
       );
     }
     return resultado;
   }
 
-  async Actualizar(usuariosID, Usuario) {
+  async Actualizar(usuariosID, User, Clave) {
     let resultado;
     try {
       resultado = await prisma.usuarios.update({
         where: { usuariosID: parseInt(usuariosID) },
         data: {
-          nombreDelUsuario: Nombre,
+          nombreDelUsuario: User,
           claveDelUsuario: Clave,
         },
       });
       let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se actualizo el usuario: ${nombre}`,
+          descripcionDeAccion: `Se actualizo el usuario`,
         },
       });
     } catch (error) {
       console.error(
-        `No se pudo actualizar el usuario ${Usuario} debido al error: ${error}`
+        `No se pudo actualizar el usuario debido al error: ${error}`
       );
     }
     return resultado;
@@ -55,7 +55,7 @@ class Usuarios {
   async Borrar(usuariosID) {
     let resultado;
     try {
-      resultado = await prisma.programaciones.delete({
+      resultado = await prisma.usuarios.delete({
         where: {
           usuariosID: parseInt(usuariosID),
         },
@@ -63,12 +63,12 @@ class Usuarios {
       let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se borro el usuario: ${nombre}`,
+          descripcionDeAccion: `Se borro el usuario`,
         },
       });
     } catch (error) {
       console.error(
-        `No se pudo eliminar el usuario ${Usuario} debido al error: ${error}`
+        `No se pudo eliminar el usuario debido al error: ${error}`
       );
     }
     return resultado;

@@ -24,21 +24,21 @@ Router.get("/:usuariosID", async (solicitud, respuesta) => {
 
 //Crear un Usuario
 Router.post("/", async (solicitud, respuesta) => {
-    const { Usuario } = solicitud.body;
-    respuesta.json(Usuario.Agregar(solicitud.body.Usuario))
+    const { User, Clave } = solicitud.body;
+    respuesta.json(Usuarios.Agregar(solicitud.body.User, solicitud.body.Clave))
   });
   
   //Borrar un Usuario
   Router.delete("/:usuariosID", async (solicitud, respuesta) => {
-    const { Usuario } = solicitud.params;
-    respuesta.json(Usuario.Borrar(solicitud.body.Usuario));
+    const { usuariosID } = solicitud.params;
+    respuesta.json(Usuarios.Borrar(solicitud.body.usuariosID));
   });
   
   //Actualizar un Servicio
   Router.put("/:usuariosID", async (solicitud, respuesta) => {
     const { usuariosID } = solicitud.params;
-    const { Usuario } = solicitud.body;
-    respuesta.json(Usuario.Actualizar(usuariosID,Usuario));
+    const { User, Clave } = solicitud.body;
+    respuesta.json(Usuarios.Actualizar(usuariosID,User,Clave));
   });
   
   module.exports = Router;
