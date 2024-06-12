@@ -33,11 +33,11 @@ class Servicios {
     return resultado;
   }
 
-  async Actualizar(ServicioId, Servicio) {
+  async Actualizar(serviciosId, Servicio) {
     let resultado;
     try {
       resultado = await prisma.servicios.update({
-        where: { ServicioId: parseInt(ServicioId) },
+        where: { serviciosId: parseInt(serviciosId) },
         data: {
           nombreDelServicio: Provincia,
           descripcionDelServicio: Descripcion,
@@ -62,12 +62,12 @@ class Servicios {
     return resultado;
   }
 
-  async Borrar(ServicioId) {
+  async Borrar(serviciosId) {
     let resultado;
     try {
       resultado = await prisma.servicios.delete({
         where: {
-          ServicioId: parseInt(ServicioId),
+          serviciosId: parseInt(serviciosId),
         },
       });
       let auditoria;
@@ -84,14 +84,14 @@ class Servicios {
     return resultado;
   }
 
-  Listar(ServicioId) {
+  Listar(serviciosId) {
     let servicios;
-    if (ServicioId === undefined) {
+    if (serviciosId === undefined) {
       servicios = prisma.servicios.findMany();
     } else {
       servicios = prisma.servicios.findMany({
         where: {
-          ServicioId: parseInt(ServicioId),
+          serviciosId: parseInt(serviciosId),
         },
       });
     }

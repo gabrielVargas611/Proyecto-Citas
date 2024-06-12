@@ -30,11 +30,11 @@ class Solicitantes {
     return resultado;
   }
 
-  async Actualizar(SolicitanteId, Solicitante) {
+  async Actualizar(solicitantesId, Solicitante) {
     let resultado;
     try {
       resultado = await prisma.solicitantes.update({
-        where: { SolicitanteId: parseInt(SolicitanteId) },
+        where: { solicitantesId: parseInt(solicitantesId) },
         data: {
           nombreDelSolicitante: Solicitante,
           telefonoDelSolicitante: Telefono,
@@ -56,12 +56,12 @@ class Solicitantes {
     return resultado;
   }
 
-  async Borrar(SolicitanteId) {
+  async Borrar(solicitantesId) {
     let resultado;
     try {
       resultado = await prisma.solicitantes.delete({
         where: {
-          SolicitanteId: parseInt(SolicitanteId),
+          solicitantesId: parseInt(solicitantesId),
         },
       });
       let auditoria;
@@ -78,14 +78,14 @@ class Solicitantes {
     return resultado;
   }
 
-  Listar(SolicitanteId) {
+  Listar(solicitantesId) {
     let solicitantes;
-    if (SolicitanteId === undefined) {
+    if (solicitantesId === undefined) {
       solicitantes = prisma.solicitantes.findMany();
     } else {
       solicitantes = prisma.solicitantes.findMany({
         where: {
-          SolicitanteId: parseInt(SolicitanteId),
+          solicitantesId: parseInt(solicitantesId),
         },
       });
     }

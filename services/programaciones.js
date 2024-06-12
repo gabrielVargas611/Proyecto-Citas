@@ -32,11 +32,11 @@ class Programaciones {
     return resultado;
   }
 
-  async Actualizar(programacionId, Programacion) {
+  async Actualizar(programacionesId, Programacion) {
     let resultado;
     try {
       resultado = await prisma.programaciones.update({
-        where: { programacionId: parseInt(programacionId) },
+        where: { programacionesId: parseInt(programacionesId) },
         data: {
             fechaInicioDisponible: FechaInicio,
             fechaFinalDisponible: FechaFinal,
@@ -56,12 +56,12 @@ class Programaciones {
     return resultado;
   }
 
-  async Borrar(programacionId) {
+  async Borrar(programacionesId) {
     let resultado;
     try {
       resultado = await prisma.programaciones.delete({
         where: {
-            programacionId: parseInt(programacionId),
+            programacionesId: parseInt(programacionesId),
         },
       });
       auditoria = await prisma.auditorias.create({
@@ -77,14 +77,14 @@ class Programaciones {
     return resultado;
   }
 
-  Listar(programacionId) {
+  Listar(programacionesId) {
     let programaciones;
-    if (programacionId === undefined) {
+    if (programacionesId === undefined) {
         programaciones = prisma.programaciones.findMany();
     } else {
         programaciones = prisma.programaciones.findMany({
         where: {
-            programacionId: parseInt(programacionId),
+          programacionesId: parseInt(programacionesId),
         },
       });
     }

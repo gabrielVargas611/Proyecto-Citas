@@ -6,19 +6,19 @@ const Solicitudes = new ServicioSolicitudes();
 const Router = express.Router();
 
 //Buscador de Solicitudes
-function listadoDeSolicitudes(SolicitudId) {
-    return Solicitudes.Listar(SolicitudId);
+function listadoDeSolicitudes(solicitudesId) {
+    return Solicitudes.Listar(solicitudesId);
 }
 
 //Buscar todas las Solicitudes
 Router.get("/", async (solicitud, respuesta) => {
-    const Solicitudes = await listadoDeSolicitudes(solicitud.params.SolicitudId);
+    const Solicitudes = await listadoDeSolicitudes(solicitud.params.solicitudesId);
     respuesta.json(Solicitudes);
   });
 
 //Buscar una Solicitudes en especifico
-Router.get("/:SolicitudId", async (solicitud, respuesta) => {
-    const Solicitudes = await listadoDeSolicitudes(solicitud.params.SolicitudId);
+Router.get("/:solicitudesId", async (solicitud, respuesta) => {
+    const Solicitudes = await listadoDeSolicitudes(solicitud.params.solicitudesId);
     respuesta.json(Solicitudes);
   });
 
@@ -29,16 +29,16 @@ Router.post("/", async (solicitud, respuesta) => {
   });
   
   //Borrar una Solicitud
-  Router.delete("/:SolicitudId", async (solicitud, respuesta) => {
+  Router.delete("/:solicitudesId", async (solicitud, respuesta) => {
     const { Solicitudes } = solicitud.params;
     respuesta.json(Solicitudes.Borrar(solicitud.body.Solicitudes));
   });
   
   //Actualizar una Solicitud
-  Router.put("/:SolicitudId", async (solicitud, respuesta) => {
-    const { SolicitudId } = solicitud.params;
+  Router.put("/:solicitudesId", async (solicitud, respuesta) => {
+    const { solicitudesId } = solicitud.params;
     const { Solicitudes } = solicitud.body;
-    respuesta.json(Solicitudes.Actualizar(SolicitudId,Solicitudes));
+    respuesta.json(Solicitudes.Actualizar(solicitudesId,Solicitudes));
   });
   
   module.exports = Router;

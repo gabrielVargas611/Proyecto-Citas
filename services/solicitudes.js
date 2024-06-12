@@ -30,11 +30,11 @@ class Solicitudes {
     return resultado;
   }
 
-  async Actualizar(SolicitudId, Solicitud) {
+  async Actualizar(solicitudesId, Solicitud) {
     let resultado;
     try {
       resultado = await prisma.solicitudes.update({
-        where: { SolicitudId: parseInt(SolicitudId) },
+        where: { solicitudesId: parseInt(solicitudesId) },
         data: {
           descripcionDeSolicitid: Descripcion,
           fechaSolicitud: Fecha,
@@ -56,12 +56,12 @@ class Solicitudes {
     return resultado;
   }
 
-  async Borrar(SolicitudId) {
+  async Borrar(solicitudesId) {
     let resultado;
     try {
       resultado = await prisma.solicitudes.delete({
         where: {
-          SolicitudId: parseInt(SolicitudId),
+          solicitudesId: parseInt(solicitudesId),
         },
       });
       let auditoria;
@@ -78,14 +78,14 @@ class Solicitudes {
     return resultado;
   }
 
-  Listar(SolicitudId) {
+  Listar(solicitudesId) {
     let solicitudes;
-    if (SolicitudId === undefined) {
+    if (solicitudesId === undefined) {
       solicitudes = prisma.solicitudes.findMany();
     } else {
       solicitudes = prisma.solicitudes.findMany({
         where: {
-          SolicitudId: parseInt(SolicitudId),
+          solicitudesId: parseInt(solicitudesId),
         },
       });
     }

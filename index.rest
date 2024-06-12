@@ -3,3 +3,158 @@
 GET http://localhost/Programaciones/ HTTP/1.1
 
 ###
+
+GET http://localhost/Servicios/ HTTP/1.1
+
+###
+
+GET http://localhost/Solicitantes/ HTTP/1.1
+
+###
+
+GET http://localhost/Solicitudes/ HTTP/1.1
+
+###
+
+GET http://localhost/Usuarios/ HTTP/1.1
+
+###
+
+GET http://localhost/Programaciones/1 HTTP/1.1
+
+###
+
+GET http://localhost/Servicios/1 HTTP/1.1
+
+###
+
+GET http://localhost/Solicitantes/1 HTTP/1.1
+
+###
+
+GET http://localhost/Solicitudes/1 HTTP/1.1
+
+###
+
+GET http://localhost/Usuarios/1 HTTP/1.1
+
+###
+
+POST  http://localhost/Programaciones HTTP/1.1
+Content-Type: application/json
+{
+    "fechaInicioDisponible":"2024-05-9",
+    "fechaFinalDisponible": "2024-06-9",
+    "IdDelServicio": 1,
+}
+
+###
+
+POST  http://localhost/Servicios HTTP/1.1
+Content-Type: application/json
+{
+
+}
+
+###
+
+POST  http://localhost/Solicitantes HTTP/1.1
+Content-Type: application/json
+{
+
+}
+
+###
+
+POST  http://localhost/Solicitudes HTTP/1.1
+Content-Type: application/json
+{
+
+}
+
+###
+
+POST  http://localhost/Usuarios HTTP/1.1
+Content-Type: application/json
+{
+
+}
+
+###
+
+DELETE  http://localhost/Programaciones/1 HTTP/1.1
+Content-Type: application/json
+{
+
+}
+###
+
+DELETE http://localhost/Servicios/1 HTTP/1.1
+Content-Type: application/json
+{
+
+}
+###
+
+DELETE http://localhost/Solicitantes/1 HTTP/1.1
+Content-Type: application/json
+{
+
+}
+###
+
+DELETE http://localhost/Solicitudes/1 HTTP/1.1
+Content-Type: application/json
+{
+
+}
+###
+
+DELETE http://localhost/Usuarios/1 HTTP/1.1
+Content-Type: application/json
+{
+
+}
+###
+
+PUT  http://localhost/Programaciones HTTP/1.1
+Content-Type: application/json
+{
+    "fechaInicioDisponible":"2024-05-9",
+    "fechaFinalDisponible": "2024-06-9",
+    "IdDelServicio": 1,
+}
+
+###
+
+PUT  http://localhost/Servicios HTTP/1.1
+Content-Type: application/json
+{
+
+}
+
+###
+
+PUT  http://localhost/Solicitantes HTTP/1.1
+Content-Type: application/json
+{
+
+}
+
+###
+
+PUT  http://localhost/Solicitudes HTTP/1.1
+Content-Type: application/json
+{
+
+}
+
+###
+
+PUT  http://localhost/Usuarios HTTP/1.1
+Content-Type: application/json
+{
+
+}
+
+###

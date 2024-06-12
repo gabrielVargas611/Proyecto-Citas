@@ -6,19 +6,19 @@ const Programaciones = new ServicioProgramaciones();
 const Router = express.Router();
 
 //Buscador de Programaciones
-function listadoDeProgramaciones(ProgramacionId) {
-    return Programaciones.Listar(ProgramacionId);
+function listadoDeProgramaciones(programacionesId) {
+    return Programaciones.Listar(programacionesId);
 }
 
 //Buscar todas las Programaciones
 Router.get("/", async (solicitud, respuesta) => {
-    const Programaciones = await listadoDeProgramaciones(solicitud.params.ProgramacionId);
+    const Programaciones = await listadoDeProgramaciones(solicitud.params.programacionesId);
     respuesta.json(Programaciones);
   });
 
 //Buscar una Programacion en especifico
-Router.get("/:ProgramacionId", async (solicitud, respuesta) => {
-    const Programaciones = await listadoDeProgramaciones(solicitud.params.ProgramacionId);
+Router.get("/:programacionesId", async (solicitud, respuesta) => {
+    const Programaciones = await listadoDeProgramaciones(solicitud.params.programacionesId);
     respuesta.json(Programaciones);
   });
 
@@ -29,16 +29,16 @@ Router.post("/", async (solicitud, respuesta) => {
   });
   
   //Borrar una Programacion
-  Router.delete("/:ProgramacionId", async (solicitud, respuesta) => {
+  Router.delete("/:programacionesId", async (solicitud, respuesta) => {
     const { Programacion } = solicitud.params;
     respuesta.json(Programacion.Borrar(solicitud.body.Programacion));
   });
   
   //Actualizar una Provincias
-  Router.put("/:ProgramacionId", async (solicitud, respuesta) => {
-    const { ProgramacionId } = solicitud.params;
+  Router.put("/:programacionesId", async (solicitud, respuesta) => {
+    const { programacionesId } = solicitud.params;
     const { Programacion } = solicitud.body;
-    respuesta.json(Programacion.Actualizar(ProgramacionId,Programacion));
+    respuesta.json(Programacion.Actualizar(programacionesId,Programacion));
   });
   
   module.exports = Router;
