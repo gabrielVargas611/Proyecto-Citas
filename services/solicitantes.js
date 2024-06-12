@@ -5,12 +5,12 @@ const prisma = new PrismaClient();
 class Solicitantes {
   constructor() {}
 
-  async Agregar(Solicitante) {
+  async Agregar(Nombre, Telefono, Correo, Clave) {
     let resultado;
     try {
       resultado = await prisma.solicitantes.create({
         data: {
-          nombreDelSolicitante: Solicitante,
+          nombreDelSolicitante: Nombre,
           telefonoDelSolicitante: Telefono,
           correoDelSolicitante: Correo,
           claveDelSolicitante: Clave,
@@ -19,24 +19,24 @@ class Solicitantes {
       let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se creo el Solicite: ${nombre}`,
+          descripcionDeAccion: `Se creo un Solicitante`,
         },
       });
     } catch (error) {
       console.error(
-        `No se pudo crear al solicitante ${Solicitante} debido al error: ${error}`
+        `No se pudo crear al solicitante debido al error: ${error}`
       );
     }
     return resultado;
   }
 
-  async Actualizar(solicitantesId, Solicitante) {
+  async Actualizar(solicitantesId, Nombre, Telefono, Correo, Clave) {
     let resultado;
     try {
       resultado = await prisma.solicitantes.update({
         where: { solicitantesId: parseInt(solicitantesId) },
         data: {
-          nombreDelSolicitante: Solicitante,
+          nombreDelSolicitante: Nombre,
           telefonoDelSolicitante: Telefono,
           correoDelSolicitante: Correo,
           claveDelSolicitante: Clave,
@@ -45,12 +45,12 @@ class Solicitantes {
       let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se actualizo el Solicite: ${nombre}`,
+          descripcionDeAccion: `Se actualizo un solicitante`,
         },
       });
     } catch (error) {
       console.error(
-        `No se pudo actualizar al solicitante ${Solicitante} debido al error: ${error}`
+        `No se pudo actualizar al solicitante debido al error: ${error}`
       );
     }
     return resultado;
@@ -67,12 +67,12 @@ class Solicitantes {
       let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se borro el Solicite: ${nombre}`,
+          descripcionDeAccion: `Se borro el Solicitante`,
         },
       });
     } catch (error) {
       console.error(
-        `No se pudo actualizar al solicitante ${Solicitante} debido al error: ${error}`
+        `No se pudo actualizar al solicitante debido al error: ${error}`
       );
     }
     return resultado;
