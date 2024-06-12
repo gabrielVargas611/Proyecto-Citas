@@ -68,7 +68,7 @@ CREATE TABLE `Auditorias` (
     `auditoriaID` INTEGER NOT NULL AUTO_INCREMENT,
     `descripcionDeAccion` VARCHAR(191) NOT NULL,
     `IdDelSolicitante` INTEGER NULL,
-    `IdDelUsuario` INTEGER NOT NULL,
+    `IdDelUsuario` INTEGER NULL,
     `FechaDeCreacion` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `ActualizadoEn` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
@@ -88,4 +88,4 @@ ALTER TABLE `Programaciones` ADD CONSTRAINT `Programaciones_IdDelServicio_fkey` 
 ALTER TABLE `Auditorias` ADD CONSTRAINT `Auditorias_IdDelSolicitante_fkey` FOREIGN KEY (`IdDelSolicitante`) REFERENCES `Solicitantes`(`solicitantesId`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Auditorias` ADD CONSTRAINT `Auditorias_IdDelUsuario_fkey` FOREIGN KEY (`IdDelUsuario`) REFERENCES `Usuarios`(`usuariosID`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Auditorias` ADD CONSTRAINT `Auditorias_IdDelUsuario_fkey` FOREIGN KEY (`IdDelUsuario`) REFERENCES `Usuarios`(`usuariosID`) ON DELETE SET NULL ON UPDATE CASCADE;

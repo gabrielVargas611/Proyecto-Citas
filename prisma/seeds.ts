@@ -161,74 +161,74 @@ async function main() {
       },
     ],
   });
-  //Soliciudes
+  //Solicitudes
   await prisma.solicitudes.createMany({
     data: [
       {
         descripcionDeSolicitid:
           "Ocupo seguridad para mi negocio el dia de descuentos del mes",
-        fechaSolicitud: "2024-05-05",
+        fechaSolicitud:new Date(2024,5,1),
         IdDelservicio: 5,
         IdDelsolicitante: 4,
       },
       {
         descripcionDeSolicitid:
           "ocupo de los servicos de contabilidad para mi negocio de venta de llantas",
-        fechaSolicitud: "2024-05-01",
+        fechaSolicitud: new Date(2024,5,1), //"2024-05-01",
         IdDelservicio: 1,
         IdDelsolicitante: 1,
       },
       {
         descripcionDeSolicitid:
           "Ocupo que mi esposa desapareca para cobrar su seguro de vida",
-        fechaSolicitud: "2024-01-01",
+        fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 6,
         IdDelsolicitante: 1,
       },
       {
         descripcionDeSolicitid:
           "Necesito que le den mantenimiento a mi lavadora",
-        fechaSolicitud: "2024-05-31",
+        fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 8,
         IdDelsolicitante: 7,
       },
       {
         descripcionDeSolicitid: "Ocupo conseguir un Yaris 2022",
-        fechaSolicitud: "2024-05-15",
+        fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 9,
         IdDelsolicitante: 9,
       },
       {
         descripcionDeSolicitid:
           "Ocupo que me ayuden a limpiar la oficina luego de la fiesta empresarial",
-        fechaSolicitud: "2024-05-20",
+        fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 2,
         IdDelsolicitante: 6,
       },
       {
         descripcionDeSolicitid:
           "Me gustaria que me creen un programa para poder rastrear en que invierto mi tiempo",
-        fechaSolicitud: "2024-05-28",
+        fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 3,
         IdDelsolicitante: 2,
       },
       {
         descripcionDeSolicitid: "Me gustaria que nos ayuden a limpiar la casa",
-        fechaSolicitud: "2024-05-8",
+        fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 2,
         IdDelsolicitante: 10,
       },
       {
         descripcionDeSolicitid:
           "Me gustaria proteccion para el translado de mercaderia de una bodega a otra",
-        fechaSolicitud: "2024-05-15",
+        fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 5,
         IdDelsolicitante: 3,
       },
       {
         descripcionDeSolicitid:
           "Me gustaria ver si me pueden reparar el calentador de agua de la casa",
-        fechaSolicitud: "2024-05-29",
+        fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 7,
         IdDelsolicitante: 6,
       },
@@ -238,53 +238,53 @@ async function main() {
   await prisma.programaciones.createMany({
     data: [
       {
-        fechaInicioDisponible: "2024-05-01",
-        fechaFinalDisponible: "2024-05-31",
+        fechaInicioDisponible: new Date(2024,6,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 1,
       },
       {
-        fechaInicioDisponible: "2024-05-03",
-        fechaFinalDisponible: "2024-05-31",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 2,
       },
       {
-        fechaInicioDisponible: "2024-05-05",
-        fechaFinalDisponible: "2024-05-31",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 3,
       },
       {
-        fechaInicioDisponible: "2024-05-01",
-        fechaFinalDisponible: "2024-05-20",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 4,
       },
       {
-        fechaInicioDisponible: "2024-05-01",
-        fechaFinalDisponible: "2024-05-30",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 5,
       },
       {
-        fechaInicioDisponible: "2024-05-01",
-        fechaFinalDisponible: "2024-05-06",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible:  new Date(2024,6,1),
         IdDelServicio: 6,
       },
       {
-        fechaInicioDisponible: "2024-05-01",
-        fechaFinalDisponible: "2024-05-15",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 7,
       },
       {
-        fechaInicioDisponible: "2024-05-01",
-        fechaFinalDisponible: "2024-05-24",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 8,
       },
       {
-        fechaInicioDisponible: "2024-05-01",
-        fechaFinalDisponible: "2024-05-19",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 9,
       },
       {
-        fechaInicioDisponible: "2024-05-01",
-        fechaFinalDisponible: "2024-05-31",
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
         IdDelServicio: 10,
       },
     ],
@@ -388,3 +388,13 @@ async function main() {
     ],
   });
 }
+
+main()
+  .then(async () => {
+    await prisma.$disconnect()
+  })
+  .catch(async (e) => {
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })

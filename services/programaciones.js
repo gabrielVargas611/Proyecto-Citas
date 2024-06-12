@@ -17,12 +17,13 @@ class Programaciones {
         },
       });
 
-      let auditoria;
+      
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se creo una programacion para: ${nombre}`,
-        },
-      });
+          descripcionDeAccion: `Se creo la programacion: ${nombre}`
+        }
+      })
+
     } catch (error) {
       console.error(
         `No se pudo crear la programacion ${Programacion} debido al error: ${error}`
@@ -37,18 +38,16 @@ class Programaciones {
       resultado = await prisma.programaciones.update({
         where: { programacionId: parseInt(programacionId) },
         data: {
-          fechaInicioDisponible: FechaInicio,
-          fechaFinalDisponible: FechaFinal,
-          IdDelServicio: Servicio,
+            fechaInicioDisponible: FechaInicio,
+            fechaFinalDisponible: FechaFinal,
+            IdDelServicio: Servicio,
         },
       });
-
-      let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se actualizo una programacion para: ${nombre}`,
-        },
-      });
+          descripcionDeAccion: `Se actualizo la programacion: ${nombre}`
+        }
+      })
     } catch (error) {
       console.error(
         `No se pudo actualizar la programacion ${Programacion} debido al error: ${error}`
@@ -62,16 +61,14 @@ class Programaciones {
     try {
       resultado = await prisma.programaciones.delete({
         where: {
-          programacionId: parseInt(programacionId),
+            programacionId: parseInt(programacionId),
         },
       });
-
-      let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
-          descripcionDeAccion: `Se borro la programacion para: ${nombre}`,
-        },
-      });
+          descripcionDeAccion: `Se borro la programacion: ${nombre}`
+        }
+      })
     } catch (error) {
       console.error(
         `No se pudo eliminar la programacion ${Programacion} debido al error: ${error}`
@@ -83,11 +80,11 @@ class Programaciones {
   Listar(programacionId) {
     let programaciones;
     if (programacionId === undefined) {
-      programaciones = prisma.programaciones.findMany();
+        programaciones = prisma.programaciones.findMany();
     } else {
-      programaciones = prisma.programaciones.findMany({
+        programaciones = prisma.programaciones.findMany({
         where: {
-          programacionId: parseInt(programacionId),
+            programacionId: parseInt(programacionId),
         },
       });
     }
