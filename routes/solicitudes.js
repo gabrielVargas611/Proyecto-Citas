@@ -24,21 +24,25 @@ Router.get("/:solicitudesId", async (solicitud, respuesta) => {
 
 //Crear una Solicitud
 Router.post("/", async (solicitud, respuesta) => {
-    const { Solicitudes } = solicitud.body;
-    respuesta.json(Solicitudes.Agregar(solicitud.body.Solicitudes))
+    const { Solicitud, Fecha, Servicio, Solicitante } = solicitud.body;
+    respuesta.json(Solicitudes.Agregar(solicitud.body.Solicitud,
+      solicitud.body.Fecha,
+      solicitud.body.Servicio,
+      solicitud.body.Solicitante
+    ))
   });
   
   //Borrar una Solicitud
   Router.delete("/:solicitudesId", async (solicitud, respuesta) => {
-    const { Solicitudes } = solicitud.params;
-    respuesta.json(Solicitudes.Borrar(solicitud.body.Solicitudes));
+    const { solicitudesId } = solicitud.params;
+    respuesta.json(Solicitudes.Borrar(solicitud.body.solicitudesId));
   });
   
   //Actualizar una Solicitud
   Router.put("/:solicitudesId", async (solicitud, respuesta) => {
     const { solicitudesId } = solicitud.params;
-    const { Solicitudes } = solicitud.body;
-    respuesta.json(Solicitudes.Actualizar(solicitudesId,Solicitudes));
+    const { Solicitud, Fecha, Servicio, Solicitante } = solicitud.body;
+    respuesta.json(Solicitudes.Actualizar(solicitudesId,Solicitud, Fecha, Servicio, Solicitante));
   });
   
   module.exports = Router;
