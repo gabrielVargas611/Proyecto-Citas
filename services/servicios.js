@@ -58,7 +58,7 @@ class Servicios {
       });
     } catch (error) {
       console.error(
-        `No se pudo actualizar el servicio ${Servicio} debido al error: ${error}`
+        `No se pudo actualizar el servicio debido al error: ${error}`
       );
     }
     return resultado;
@@ -81,7 +81,7 @@ class Servicios {
       });
     } catch (error) {
       console.error(
-        `No se pudo borrar el servicio ${Servicio} debido al error: ${error}`
+        `No se pudo borrar el servicio debido al error: ${error}`
       );
     }
     return resultado;
