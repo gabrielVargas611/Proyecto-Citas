@@ -10,8 +10,14 @@ class Usuarios {
     try {
       resultado = await prisma.usuarios.create({
         data: {
-            nombreDelUsuario: Nombre,
-            claveDelUsuario: Clave
+          nombreDelUsuario: Nombre,
+          claveDelUsuario: Clave,
+        },
+      });
+      let auditoria;
+      auditoria = await prisma.auditorias.create({
+        data: {
+          descripcionDeAccion: `Se creo el usuario: ${nombre}`,
         },
       });
     } catch (error) {
@@ -28,8 +34,14 @@ class Usuarios {
       resultado = await prisma.usuarios.update({
         where: { usuarioId: parseInt(usuarioId) },
         data: {
-            nombreDelUsuario: Nombre,
-            claveDelUsuario: Clave
+          nombreDelUsuario: Nombre,
+          claveDelUsuario: Clave,
+        },
+      });
+      let auditoria;
+      auditoria = await prisma.auditorias.create({
+        data: {
+          descripcionDeAccion: `Se actualizo el usuario: ${nombre}`,
         },
       });
     } catch (error) {
@@ -45,7 +57,13 @@ class Usuarios {
     try {
       resultado = await prisma.programaciones.delete({
         where: {
-            usuarioId: parseInt(usuarioId),
+          usuarioId: parseInt(usuarioId),
+        },
+      });
+      let auditoria;
+      auditoria = await prisma.auditorias.create({
+        data: {
+          descripcionDeAccion: `Se borro el usuario: ${nombre}`,
         },
       });
     } catch (error) {
@@ -59,11 +77,11 @@ class Usuarios {
   Listar(usuarioId) {
     let usuarios;
     if (usuarioId === undefined) {
-        usuarios = prisma.usuarios.findMany();
+      usuarios = prisma.usuarios.findMany();
     } else {
-        usuarios = prisma.usuarios.findMany({
+      usuarios = prisma.usuarios.findMany({
         where: {
-            usuarioId: parseInt(usuarioId),
+          usuarioId: parseInt(usuarioId),
         },
       });
     }
