@@ -6,10 +6,9 @@ class Programaciones {
   constructor() {}
 
   async Agregar(Inicio, Final, Servicio) {
-    let resultado;
-
+    
     try {
-      resultado = await prisma.programaciones.create({
+      await prisma.programaciones.create({
         data: {
           fechaInicioDisponible: Inicio,
           fechaFinalDisponible: Final,
@@ -17,19 +16,17 @@ class Programaciones {
         },
       });
 
-      
-      auditoria = await prisma.auditorias.create({
+      await prisma.auditorias.create({
         data: {
           descripcionDeAccion: `Se creo una programacion`
-        }
-      })
+        },
+      });
 
     } catch (error) {
       console.error(
         `No se pudo crear la programacion debido al error: ${error}`
       );
     }
-    return resultado;
   }
 
   async Actualizar(programacionesId, Inicio, Final, Servicio) {
@@ -43,6 +40,7 @@ class Programaciones {
             IdDelServicio: Servicio,
         },
       });
+      let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
           descripcionDeAccion: `Se actualizo una programacion`
@@ -64,6 +62,7 @@ class Programaciones {
             programacionesId: parseInt(programacionesId),
         },
       });
+      let auditoria;
       auditoria = await prisma.auditorias.create({
         data: {
           descripcionDeAccion: `Se borro la programacion`
