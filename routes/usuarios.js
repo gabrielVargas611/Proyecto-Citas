@@ -30,16 +30,17 @@ Router.post("/", async (solicitud, respuesta) => {
   
   //Borrar un Usuario
   Router.delete("/:usuariosID", async (solicitud, respuesta) => {
-    const { usuariosID } = solicitud.params;
-    respuesta.json(Usuarios.Borrar(solicitud.body.usuariosID));
+    respuesta.json(Usuarios.Borrar(solicitud.params.usuariosID));
   });
   
   //Actualizar un Servicio
   Router.put("/:usuariosID", async (solicitud, respuesta) => {
     const { usuariosID } = solicitud.params;
-    const { User, Clave } = solicitud.body;
+    const { User, Clave } = solicitud.params;
     respuesta.json(Usuarios.Actualizar(usuariosID,User,Clave));
   });
+
+  //Tarea cambiar todos los archivos de ruta para que haga por parametros en vez del body del JSON
   
   module.exports = Router;
   
