@@ -19,7 +19,7 @@ model Servicios{
   descripcionDelServicio String
   telefonoDeContacto String
   correoDeContacto String
-  precioDelServicio Int
+  //precioDelServicio Int
   nombreDelExperto String
   Solicitud Solicitudes [] @relation("ServicioConSolicitudes")
   Programa Programaciones[] @relation("ProgramacionConServicios")
@@ -34,7 +34,7 @@ model Solicitantes{
   correoDelSolicitante String
   claveDelSolicitante String
   Solicitud Solicitudes [] @relation("ServicioConSolicitantes")
-  Auditoria Auditorias[] @relation("AuditoriaConSolicitante")
+  //Auditoria Auditorias[] @relation("AuditoriaConSolicitante")
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
 }
@@ -43,11 +43,11 @@ model Solicitudes{
   solicitudesId Int @id @default(autoincrement())
   descripcionDeSolicitid String
   fechaSolicitud DateTime
-  confirmacion String @default("Por Confirmar")
+  //confirmacion String @default("Por Confirmar")
   IdDelservicio Int
-  Servicio Servicios @relation("ServicioConSolicitudes", fields: [IdDelservicio], references: [serviciosId])
+  Servicio Servicios @relation("ServicioConSolicitudes", fields: [IdDelservicio], references: [serviciosId], onDelete: Cascade)
   IdDelsolicitante Int
-  Solicitante Solicitantes @relation("ServicioConSolicitantes", fields: [IdDelsolicitante],references: [solicitantesId])
+  Solicitante Solicitantes @relation("ServicioConSolicitantes", fields: [IdDelsolicitante],references: [solicitantesId], onDelete: Cascade)
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
 }
@@ -57,7 +57,7 @@ model Programaciones{
   fechaInicioDisponible DateTime
   fechaFinalDisponible DateTime
   IdDelServicio Int
-  Servicio Servicios @relation("ProgramacionConServicios", fields: [IdDelServicio], references: [serviciosId])
+  Servicio Servicios @relation("ProgramacionConServicios", fields: [IdDelServicio], references: [serviciosId], onDelete: Cascade)
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
 }
@@ -66,7 +66,7 @@ model Usuarios{
   usuariosID Int @id @default(autoincrement())
   nombreDelUsuario String
   claveDelUsuario String
-  Auditoria Auditorias[] @relation("AuditoriaConUsuario")
+  //Auditoria Auditorias[] @relation("AuditoriaConUsuario")
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
 }
@@ -74,10 +74,10 @@ model Usuarios{
 model Auditorias{
   auditoriaID Int @id @default(autoincrement())
   descripcionDeAccion String
-  IdDelSolicitante  Int?
-  Solicitante Solicitantes? @relation("AuditoriaConSolicitante", fields: [IdDelSolicitante], references: [solicitantesId])
-  IdDelUsuario Int?
-  Usuario Usuarios? @relation("AuditoriaConUsuario", fields: [IdDelUsuario], references: [usuariosID])
+  ///IdDelSolicitante  Int?
+  //Solicitante Solicitantes? @relation("AuditoriaConSolicitante", fields: [IdDelSolicitante], references: [solicitantesId])
+  //IdDelUsuario Int?
+  //Usuario Usuarios? @relation("AuditoriaConUsuario", fields: [IdDelUsuario], references: [usuariosID])
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
 }
