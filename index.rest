@@ -93,8 +93,8 @@ POST  http://localhost/Usuarios HTTP/1.1
 Content-Type: application/json
 
 {
-    "User": "Test",
-    "Clave": "Test"
+    "User": "Cesar",
+    "Clave": "Imperator"
 }
 
 ###
@@ -131,12 +131,8 @@ Content-Type: application/json
 }
 ###
 
-DELETE http://localhost/Usuarios/10 HTTP/1.1
-Content-Type: application/json
+DELETE http://localhost/Usuarios/12 HTTP/1.1
 
-{
-    "usuariosID": 10
-}
 ###
 
 PUT  http://localhost/Programaciones/1 HTTP/1.1
@@ -189,11 +185,4 @@ Content-Type: application/json
 ###
 
 PUT  http://localhost/Usuarios/1 HTTP/1.1
-Content-Type: application/json
-
-{
-    "User": "Update",
-    "Clave": "Update"
-}
-
 ###
