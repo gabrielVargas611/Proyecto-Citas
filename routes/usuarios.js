@@ -1,6 +1,7 @@
 const express = require("express");
 
 const ServicioUsuarios = require("./../services/usuarios.js");
+const res = require("express/lib/response.js");
 const Usuarios = new ServicioUsuarios();
 
 const Router = express.Router();
@@ -10,11 +11,21 @@ function listadoDeUsuarioss(usuariosID) {
     return Usuarios.Listar(usuariosID);
 }
 
-//Buscar todas los Usuarios
+/*//Buscar todas los Usuarios
 Router.get("/", async (solicitud, respuesta) => {
+  if(Usuarios.ValidarToken2(solicitud)==='Administrador'){
     const Usuarios = await listadoDeUsuarioss(solicitud.params.usuariosID);
     respuesta.json(Usuarios);
-  });
+  }
+  else{
+    respuesta.status(401).json();
+  }
+  });*/
+
+  Router.get("/", async (solicitud, respuesta) => {
+      const Usuarios = await listadoDeUsuarioss(solicitud.params.usuariosID);
+      respuesta.json(Usuarios);
+    });
 
 //Buscar un Usuario en especifico
 Router.get("/:usuariosID", async (solicitud, respuesta) => {

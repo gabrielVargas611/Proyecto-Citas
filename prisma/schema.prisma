@@ -19,7 +19,7 @@ model Servicios{
   descripcionDelServicio String
   telefonoDeContacto String
   correoDeContacto String
-  //precioDelServicio Int
+  precioDelServicio Int
   nombreDelExperto String
   Solicitud Solicitudes [] @relation("ServicioConSolicitudes")
   Programa Programaciones[] @relation("ProgramacionConServicios")
@@ -43,7 +43,7 @@ model Solicitudes{
   solicitudesId Int @id @default(autoincrement())
   descripcionDeSolicitid String
   fechaSolicitud DateTime
-  //confirmacion String @default("Por Confirmar")
+  confirmacion String @default("Por Confirmar")
   IdDelservicio Int
   Servicio Servicios @relation("ServicioConSolicitudes", fields: [IdDelservicio], references: [serviciosId], onDelete: Cascade)
   IdDelsolicitante Int
@@ -66,6 +66,7 @@ model Usuarios{
   usuariosID Int @id @default(autoincrement())
   nombreDelUsuario String
   claveDelUsuario String
+  //rol String
   //Auditoria Auditorias[] @relation("AuditoriaConUsuario")
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
@@ -80,4 +81,9 @@ model Auditorias{
   //Usuario Usuarios? @relation("AuditoriaConUsuario", fields: [IdDelUsuario], references: [usuariosID])
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
+}
+
+enum Autenticar {
+  Administrador
+  Cliente
 }

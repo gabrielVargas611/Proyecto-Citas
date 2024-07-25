@@ -162,7 +162,7 @@ async function main() {
     ],
   });
   //Solicitudes
-  await prisma.solicitudes.createMany({
+  /*await prisma.solicitudes.createMany({
     data: [
       {
         descripcionDeSolicitid:
@@ -233,7 +233,7 @@ async function main() {
         IdDelsolicitante: 6,
       },
     ],
-  });
+  });*/
   //Programaciones
   await prisma.programaciones.createMany({
     data: [
@@ -295,51 +295,62 @@ async function main() {
       {
         nombreDelUsuario: "admin",
         claveDelUsuario: "admin",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "cisco",
         claveDelUsuario: "password",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "troy",
         claveDelUsuario: "woodenHorse",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "me",
         claveDelUsuario: "meWithPower",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "uncle Ben",
         claveDelUsuario: "powerResponsability",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "BruceWayne",
         claveDelUsuario: "imBatman",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "anakin",
         claveDelUsuario: "notJediMaster",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "steve",
         claveDelUsuario: "steve",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "Masterchief",
         claveDelUsuario: "Halo",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "Napoleon",
         claveDelUsuario: "waterloo",
+        //rol: "admin"
       },
       {
         nombreDelUsuario: "ceasar",
         claveDelUsuario: "imperator",
+        //rol: "admin"
       },
     ],
   });
   //Auditorias
-  await prisma.auditorias.createMany({
+  /*await prisma.auditorias.createMany({
     data: [
       {
         descripcionDeAccion: "Usuario creo Solicitente",
@@ -386,7 +397,7 @@ async function main() {
         IdDelUsuario: 1,
       },
     ],
-  });
+  });*/
 }
 
 main()

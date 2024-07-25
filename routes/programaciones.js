@@ -33,8 +33,7 @@ Router.post("/", async (solicitud, respuesta) => {
   
   //Borrar una Programacion
   Router.delete("/:programacionesId", async (solicitud, respuesta) => {
-    const { programacionesId } = solicitud.params;
-    respuesta.json(Programaciones.Borrar(solicitud.body.programacionesId));
+    respuesta.json(Programaciones.Borrar(solicitud.params.programacionesId));
   });
   
   //Actualizar una Provincias

@@ -1,17 +1,22 @@
 const { PrismaClient } = require("@prisma/client");
+//const bcrypt = require ('bcrypt');
+//const crypto = require ('crypto');
+//const jwt = require('jsonwebtoken');
 
 const prisma = new PrismaClient();
 
 class Usuarios {
   constructor() {}
 
-  async Agregar(User, Clave) {
+  async Agregar(User, Clave, Rol) {
+
     let resultado;
     try {
       resultado = await prisma.usuarios.create({
         data: {
           nombreDelUsuario: User,
           claveDelUsuario: Clave,
+          //rol: Rol
         },
       });
       let auditoria;
@@ -28,7 +33,7 @@ class Usuarios {
     return resultado;
   }
 
-  async Actualizar(usuariosID, User, Clave) {
+  async Actualizar(usuariosID, User, Clave, Rol) {
     let resultado;
     try {
       resultado = await prisma.usuarios.update({
@@ -36,6 +41,7 @@ class Usuarios {
         data: {
           nombreDelUsuario: User,
           claveDelUsuario: Clave,
+          //rol: Rol
         },
       });
       let auditoria;
@@ -88,5 +94,47 @@ class Usuarios {
     return usuarios;
   }
 }
-
 module.exports = Usuarios;
+ /* async login(Solicitud){
+    let resultado;
+    try{
+      resultado = Resultado = await jwt.verify(Solicitud.headers.authorization.split(" ")[1], this.PalabraSecreta);
+    }
+    catch(err){
+      resultado = err
+    }
+    return resultado
+    /*bcrypt.hash(Clave,10,function(err, hash){
+      console.log(hash);
+    })
+    PalabraSecreta ="secret Recepie"
+  }
+
+  async autenticar(user, clave){
+  let Resultado = await bcrypt.compare(ClaveSinEncriptar, Usuario.Clave);
+  if(Resultado === true){
+    return jwt.sign({ data: Usuario.Rol }, this.PalabraSecreta, { expiresIn: '5m'});
+  }
+    else{
+      return false;
+    }
+  }
+}
+
+async function ValidarToken2(){
+  let resultado
+  try{
+    Resultado = await Usuarios.login(Solicitud);
+  }
+  catch(error){
+    Resultado.json(error);
+  }
+  return Resultado.data
+}
+
+
+function encriptar(){
+  bcrypt.hash("ClaveSinEncriptar",10,function(err,hash){
+    console.log(hash);
+  })
+}*/

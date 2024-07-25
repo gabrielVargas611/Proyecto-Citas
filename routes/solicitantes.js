@@ -34,8 +34,7 @@ Router.post("/", async (solicitud, respuesta) => {
   
   //Borrar un Solicitante
   Router.delete("/:solicitantesId", async (solicitud, respuesta) => {
-    const { solicitantesId } = solicitud.params;
-    respuesta.json(Solicitantes.Borrar(solicitud.body.solicitantesId));
+    respuesta.json(Solicitantes.Borrar(solicitud.params.solicitantesId));
   });
   
   //Actualizar un Solicitante

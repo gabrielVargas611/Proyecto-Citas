@@ -1,5 +1,9 @@
 ###
 
+GET http://localhost/Usuarios/ HTTP/1.1
+
+###
+
 GET http://localhost/Programaciones/ HTTP/1.1
 
 ###
@@ -100,38 +104,18 @@ Content-Type: application/json
 ###
 
 DELETE  http://localhost/Programaciones/10 HTTP/1.1
-Content-Type: application/json
-
-{
-    "programacionesId": 10
-}
 ###
 
 DELETE http://localhost/Servicios/10 HTTP/1.1
-Content-Type: application/json
-
-{
-    "serviciosId": 10
-}
 ###
 
-DELETE http://localhost/Solicitantes/10 HTTP/1.1
-Content-Type: application/json
-
-{
-    "solicitantesId": 10
-}
+DELETE http://localhost/Solicitantes/ HTTP/1.1
 ###
 
 DELETE http://localhost/Solicitudes/10 HTTP/1.1
-Content-Type: application/json
-
-{
-    "solicitudesId": 10
-}
 ###
 
-DELETE http://localhost/Usuarios/12 HTTP/1.1
+DELETE http://localhost/Usuarios/ HTTP/1.1
 
 ###
 
