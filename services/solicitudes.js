@@ -5,15 +5,15 @@ const prisma = new PrismaClient();
 class Solicitudes {
   constructor() {}
 
-  async Agregar(Solicitud, Fecha, Servicio, Solicitante) {
+  async Agregar(descripcionDeSolicitid, fechaSolicitud, IdDelservicio, IdDelsolicitante) {
     let resultado;
     try {
       resultado = await prisma.solicitudes.create({
         data: {
-          descripcionDeSolicitid: Solicitud,
-          fechaSolicitud: Fecha,
-          IdDelservicio: Servicio,
-          IdDelsolicitante: Solicitante,
+          descripcionDeSolicitid: descripcionDeSolicitid,
+          fechaSolicitud: fechaSolicitud,
+          IdDelservicio: IdDelservicio,
+          IdDelsolicitante: IdDelsolicitante,
         },
       });
       let auditoria;

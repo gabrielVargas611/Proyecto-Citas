@@ -24,11 +24,11 @@ Router.get("/:solicitudesId", async (solicitud, respuesta) => {
 
 //Crear una Solicitud
 Router.post("/", async (solicitud, respuesta) => {
-    const { Solicitud, Fecha, Servicio, Solicitante } = solicitud.body;
-    respuesta.json(Solicitudes.Agregar(solicitud.body.Solicitud,
-      solicitud.body.Fecha,
-      solicitud.body.Servicio,
-      solicitud.body.Solicitante
+    //const { Solicitud, Fecha, Servicio, Solicitante } = solicitud.body;
+    respuesta.json(Solicitudes.Agregar(solicitud.body.descripcionDeSolicitid,
+      solicitud.body.fechaSolicitud,
+      solicitud.body.IdDelservicio,
+      solicitud.body.IdDelsolicitante
     ))
   });
   
@@ -41,7 +41,7 @@ Router.post("/", async (solicitud, respuesta) => {
   Router.put("/:solicitudesId", async (solicitud, respuesta) => {
     const { solicitudesId } = solicitud.params;
     const { Solicitud, Fecha, Servicio, Solicitante } = solicitud.body;
-    respuesta.json(Solicitudes.Actualizar(solicitudesId,Solicitud, Fecha, Servicio, Solicitante));
+    respuesta.json(Solicitudes.Actualizar(solicitudesId,descripcionDeSolicitid, fechaSolicitud, IdDelservicio, IdDelsolicitante));
   });
   
   module.exports = Router;

@@ -161,8 +161,136 @@ async function main() {
       },
     ],
   });
+  
+  //Programaciones
+  await prisma.programaciones.createMany({
+    data: [
+      {
+        fechaInicioDisponible: new Date(2024,6,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 1,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 2,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 3,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 4,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 5,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible:  new Date(2024,6,1),
+        IdDelServicio: 6,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 7,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 8,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 9,
+      },
+      {
+        fechaInicioDisponible: new Date(2024,5,1),
+        fechaFinalDisponible: new Date(2024,6,1),
+        IdDelServicio: 10,
+      },
+    ],
+  });
+  //Usuarios
+  await prisma.usuarios.createMany({
+    data: [
+      {
+        nombreDelUsuario: "admin",
+        claveDelUsuario: "admin",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "cisco",
+        claveDelUsuario: "$2b$10$82udm6lgk7ItzZ7hb2Jt10hkVrOc.IWLHdjZEQui9ydAGQNDLaFiq",//123456
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "troy",
+        claveDelUsuario: "woodenHorse",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "me",
+        claveDelUsuario: "meWithPower",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "uncle Ben",
+        claveDelUsuario: "powerResponsability",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "BruceWayne",
+        claveDelUsuario: "imBatman",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "anakin",
+        claveDelUsuario: "notJediMaster",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "steve",
+        claveDelUsuario: "steve",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "Masterchief",
+        claveDelUsuario: "Halo",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "Napoleon",
+        claveDelUsuario: "waterloo",
+        rol: "Administrador",
+        Token: ""
+      },
+      {
+        nombreDelUsuario: "ceasar",
+        claveDelUsuario: "imperator",
+        rol: "Administrador",
+        Token: ""
+      },
+    ],
+  });
+
   //Solicitudes
-  /*await prisma.solicitudes.createMany({
+  await prisma.solicitudes.createMany({
     data: [
       {
         descripcionDeSolicitid:
@@ -231,121 +359,6 @@ async function main() {
         fechaSolicitud: new Date(2024,5,1),
         IdDelservicio: 7,
         IdDelsolicitante: 6,
-      },
-    ],
-  });*/
-  //Programaciones
-  await prisma.programaciones.createMany({
-    data: [
-      {
-        fechaInicioDisponible: new Date(2024,6,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 1,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 2,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 3,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 4,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 5,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible:  new Date(2024,6,1),
-        IdDelServicio: 6,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 7,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 8,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 9,
-      },
-      {
-        fechaInicioDisponible: new Date(2024,5,1),
-        fechaFinalDisponible: new Date(2024,6,1),
-        IdDelServicio: 10,
-      },
-    ],
-  });
-  //Usuarios
-  await prisma.usuarios.createMany({
-    data: [
-      {
-        nombreDelUsuario: "admin",
-        claveDelUsuario: "admin",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "cisco",
-        claveDelUsuario: "password",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "troy",
-        claveDelUsuario: "woodenHorse",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "me",
-        claveDelUsuario: "meWithPower",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "uncle Ben",
-        claveDelUsuario: "powerResponsability",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "BruceWayne",
-        claveDelUsuario: "imBatman",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "anakin",
-        claveDelUsuario: "notJediMaster",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "steve",
-        claveDelUsuario: "steve",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "Masterchief",
-        claveDelUsuario: "Halo",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "Napoleon",
-        claveDelUsuario: "waterloo",
-        //rol: "admin"
-      },
-      {
-        nombreDelUsuario: "ceasar",
-        claveDelUsuario: "imperator",
-        //rol: "admin"
       },
     ],
   });

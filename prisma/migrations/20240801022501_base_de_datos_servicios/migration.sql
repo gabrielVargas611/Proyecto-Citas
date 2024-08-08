@@ -57,6 +57,8 @@ CREATE TABLE `Usuarios` (
     `usuariosID` INTEGER NOT NULL AUTO_INCREMENT,
     `nombreDelUsuario` VARCHAR(191) NOT NULL,
     `claveDelUsuario` VARCHAR(191) NOT NULL,
+    `rol` ENUM('Administrador', 'Cliente') NOT NULL,
+    `Token` VARCHAR(200) NULL,
     `FechaDeCreacion` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `ActualizadoEn` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
@@ -67,8 +69,6 @@ CREATE TABLE `Usuarios` (
 CREATE TABLE `Auditorias` (
     `auditoriaID` INTEGER NOT NULL AUTO_INCREMENT,
     `descripcionDeAccion` VARCHAR(191) NOT NULL,
-    `IdDelSolicitante` INTEGER NULL,
-    `IdDelUsuario` INTEGER NULL,
     `FechaDeCreacion` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `ActualizadoEn` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
@@ -76,16 +76,10 @@ CREATE TABLE `Auditorias` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Solicitudes` ADD CONSTRAINT `Solicitudes_IdDelservicio_fkey` FOREIGN KEY (`IdDelservicio`) REFERENCES `Servicios`(`serviciosId`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Solicitudes` ADD CONSTRAINT `Solicitudes_IdDelservicio_fkey` FOREIGN KEY (`IdDelservicio`) REFERENCES `Servicios`(`serviciosId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Solicitudes` ADD CONSTRAINT `Solicitudes_IdDelsolicitante_fkey` FOREIGN KEY (`IdDelsolicitante`) REFERENCES `Solicitantes`(`solicitantesId`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Solicitudes` ADD CONSTRAINT `Solicitudes_IdDelsolicitante_fkey` FOREIGN KEY (`IdDelsolicitante`) REFERENCES `Solicitantes`(`solicitantesId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Programaciones` ADD CONSTRAINT `Programaciones_IdDelServicio_fkey` FOREIGN KEY (`IdDelServicio`) REFERENCES `Servicios`(`serviciosId`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Auditorias` ADD CONSTRAINT `Auditorias_IdDelSolicitante_fkey` FOREIGN KEY (`IdDelSolicitante`) REFERENCES `Solicitantes`(`solicitantesId`) ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Auditorias` ADD CONSTRAINT `Auditorias_IdDelUsuario_fkey` FOREIGN KEY (`IdDelUsuario`) REFERENCES `Usuarios`(`usuariosID`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Programaciones` ADD CONSTRAINT `Programaciones_IdDelServicio_fkey` FOREIGN KEY (`IdDelServicio`) REFERENCES `Servicios`(`serviciosId`) ON DELETE CASCADE ON UPDATE CASCADE;

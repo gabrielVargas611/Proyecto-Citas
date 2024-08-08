@@ -66,7 +66,8 @@ model Usuarios{
   usuariosID Int @id @default(autoincrement())
   nombreDelUsuario String
   claveDelUsuario String
-  //rol String
+  rol Roles
+  Token String? @db.VarChar(200)
   //Auditoria Auditorias[] @relation("AuditoriaConUsuario")
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt
@@ -83,7 +84,7 @@ model Auditorias{
   ActualizadoEn DateTime @default(now()) @updatedAt
 }
 
-enum Autenticar {
+enum Roles {
   Administrador
   Cliente
 }

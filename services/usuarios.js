@@ -1,12 +1,56 @@
 const { PrismaClient } = require("@prisma/client");
-//const bcrypt = require ('bcrypt');
-//const crypto = require ('crypto');
-//const jwt = require('jsonwebtoken');
+const bcrypt = require ('bcrypt');
+const crypto = require ('crypto');
+const jwt = require('jsonwebtoken');
 
 const prisma = new PrismaClient();
 
 class Usuarios {
   constructor() {}
+
+  PalabraSecreta = "Secreto"
+
+// async autenticacion(nombreDelUsuario,claveDelUsuario){
+//   let Usuario = await prisma.usuarios.findFirst({
+//     where: {
+//       nombreDelUsuario: nombreDelUsuario
+//     },
+//     select: {
+//       rol: true,
+//       claveDelUsuario: true
+//     }
+//   });
+//   let Resultado = await bcrypt.compare(claveDelUsuario, Usuario.claveDelUsuario)
+//   if(Resultado === true){
+//     return jwt.sign({data: Usuario.Rol}, this.PalabraSecreta,{expiresIn: '1m'});
+//   }
+//   else{
+//     return false;
+//   }
+// }
+
+// async ValidarToken(solicitud){
+//   let resultado;
+//   try{
+//     resultado =await jwt.verify(solicitud.headers.authorization.split("")[1],this.PalabraSecreta);
+//   }
+//   catch(err){
+//     resultado = err;
+//   }
+// }
+
+// async ValidarTokenGlobal(solicitud){
+//   let token = solicitud.headers.authorization && solicitud.headers.authorization.split("")[1];
+//   let resultado;
+//   try{
+//     resultado = await this.ValidarToken(token);
+//   }
+//   catch(err){
+//     console.error(
+//       ` ${error}`
+//     );
+//   }
+// }
 
   async Agregar(User, Clave, Rol) {
 
@@ -93,48 +137,8 @@ class Usuarios {
     }
     return usuarios;
   }
+
 }
+
 module.exports = Usuarios;
- /* async login(Solicitud){
-    let resultado;
-    try{
-      resultado = Resultado = await jwt.verify(Solicitud.headers.authorization.split(" ")[1], this.PalabraSecreta);
-    }
-    catch(err){
-      resultado = err
-    }
-    return resultado
-    /*bcrypt.hash(Clave,10,function(err, hash){
-      console.log(hash);
-    })
-    PalabraSecreta ="secret Recepie"
-  }
-
-  async autenticar(user, clave){
-  let Resultado = await bcrypt.compare(ClaveSinEncriptar, Usuario.Clave);
-  if(Resultado === true){
-    return jwt.sign({ data: Usuario.Rol }, this.PalabraSecreta, { expiresIn: '5m'});
-  }
-    else{
-      return false;
-    }
-  }
-}
-
-async function ValidarToken2(){
-  let resultado
-  try{
-    Resultado = await Usuarios.login(Solicitud);
-  }
-  catch(error){
-    Resultado.json(error);
-  }
-  return Resultado.data
-}
-
-
-function encriptar(){
-  bcrypt.hash("ClaveSinEncriptar",10,function(err,hash){
-    console.log(hash);
-  })
-}*/
+  
