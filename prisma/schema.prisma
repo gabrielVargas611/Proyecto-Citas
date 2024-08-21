@@ -67,7 +67,7 @@ model Usuarios{
   nombreDelUsuario String
   claveDelUsuario String
   rol Roles
-  Token String? @db.VarChar(200)
+  Token String? @db.VarChar(300)
   //Auditoria Auditorias[] @relation("AuditoriaConUsuario")
   FechaDeCreacion DateTime @default(now())
   ActualizadoEn DateTime @default(now()) @updatedAt

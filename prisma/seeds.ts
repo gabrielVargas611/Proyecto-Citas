@@ -228,7 +228,7 @@ async function main() {
       },
       {
         nombreDelUsuario: "cisco",
-        claveDelUsuario: "$2b$10$82udm6lgk7ItzZ7hb2Jt10hkVrOc.IWLHdjZEQui9ydAGQNDLaFiq",//123456
+        claveDelUsuario: "$2b$10$aSLnkAQKeFtrPRC42c/CAeil2XznozV3wAdmyb4GtsEkvlF.M3nIy",//123456
         rol: "Administrador",
         Token: ""
       },

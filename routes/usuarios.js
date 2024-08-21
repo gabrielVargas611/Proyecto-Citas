@@ -11,23 +11,31 @@ function listadoDeUsuarioss(usuariosID) {
     return Usuarios.Listar(usuariosID);
 }
 
-/*Router.post('/autenticar', async (solicitud, respuesta)=>{
-  respuesta.json(await Usuarios.autenticacion(solicitud.body.nombreDelUsuario,solicitud.body.claveDelUsuario))
+Router.post("/autenticar", async (solicitud, respuesta) => {
+  respuesta.json(await Usuarios.autenticar(solicitud.body.nombreDelUsuario, solicitud.body.claveDelUsuario));
+  console.log(solicitud.body.nombreDelUsuario, solicitud.body.claveDelUsuario)
 });
 
-Router.post('/validarToken', async (solicitud, respuesta)=>{
-  respuesta.json(await Usuarios.ValidarToken(solicitud))
-});*/
+Router.post("/validarToken", async (solicitud, respuesta) => {
+  respuesta.json(await Usuarios.ValidarToken(solicitud));
+});
+
+Router.post("/desautenticar", async (solicitud, respuesta) => {
+  respuesta.json(await Usuarios.DesAutenticacion(solicitud.body.nombreDelUsuario));
+});
 
 //Buscar todas los Usuarios
 Router.get("/", async (solicitud, respuesta) => {
+  /*
   if(Usuarios.ValidarToken(solicitud)==='Administrador'){
     const Usuarios = await listadoDeUsuarioss(solicitud.params.usuariosID);
     respuesta.json(Usuarios);
   }
   else{
     respuesta.status(401).json();
-  }
+  }*/
+    const Usuarios = await listadoDeUsuarioss(solicitud.params.usuariosID);
+    respuesta.json(Usuarios);
   });
 
   Router.get("/", async (solicitud, respuesta) => {

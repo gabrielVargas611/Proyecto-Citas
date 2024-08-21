@@ -58,7 +58,7 @@ CREATE TABLE `Usuarios` (
     `nombreDelUsuario` VARCHAR(191) NOT NULL,
     `claveDelUsuario` VARCHAR(191) NOT NULL,
     `rol` ENUM('Administrador', 'Cliente') NOT NULL,
-    `Token` VARCHAR(200) NULL,
+    `Token` VARCHAR(300) NULL,
     `FechaDeCreacion` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `ActualizadoEn` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 

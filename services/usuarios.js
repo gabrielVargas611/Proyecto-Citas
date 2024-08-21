@@ -8,49 +8,88 @@ const prisma = new PrismaClient();
 class Usuarios {
   constructor() {}
 
-  PalabraSecreta = "Secreto"
+  PalabraSecreta = "MiPalabraSecreta"
 
-// async autenticacion(nombreDelUsuario,claveDelUsuario){
-//   let Usuario = await prisma.usuarios.findFirst({
-//     where: {
-//       nombreDelUsuario: nombreDelUsuario
-//     },
-//     select: {
-//       rol: true,
-//       claveDelUsuario: true
-//     }
-//   });
-//   let Resultado = await bcrypt.compare(claveDelUsuario, Usuario.claveDelUsuario)
-//   if(Resultado === true){
-//     return jwt.sign({data: Usuario.Rol}, this.PalabraSecreta,{expiresIn: '1m'});
-//   }
-//   else{
-//     return false;
-//   }
-// }
+async autenticar(nombreDelUsuario,claveDelUsuario){
+  let Usuario = await prisma.usuarios.findFirst({
+    where: {
+      nombreDelUsuario: nombreDelUsuario
+    },
+    select: {
+      rol: true,
+      claveDelUsuario: true,
+      nombreDelUsuario: true,
+      usuariosID: true
+    }
+  });
+  let Resultado = await bcrypt.compare(claveDelUsuario, Usuario.claveDelUsuario)
+  console.log(claveDelUsuario,Usuario.claveDelUsuario)
+  console.log(Resultado)
+  if(Resultado === true){
+    return this.GenerarToken(Usuario.rol,Usuario.nombreDelUsuario, Usuario.usuariosID)
+  }
+  else{
+    return false;
+  }
+}
 
-// async ValidarToken(solicitud){
-//   let resultado;
-//   try{
-//     resultado =await jwt.verify(solicitud.headers.authorization.split("")[1],this.PalabraSecreta);
-//   }
-//   catch(err){
-//     resultado = err;
-//   }
-// }
+async GenerarToken(Rol,nombreDelUsuario, usuariosID){
+  let token = jwt.sign({ Rol, nombreDelUsuario, usuariosID }, this.PalabraSecreta, { expiresIn: '5m' }); 
+  await prisma.usuarios.update({
+    where: { 
+      nombreDelUsuario: nombreDelUsuario,
+      usuariosID: usuariosID
+    },
+    data: {
+      Token: token,
+    },
+  });
+  return token;
+  
+}
 
-// async ValidarTokenGlobal(solicitud){
-//   let token = solicitud.headers.authorization && solicitud.headers.authorization.split("")[1];
-//   let resultado;
-//   try{
-//     resultado = await this.ValidarToken(token);
-//   }
-//   catch(err){
-//     console.error(
-//       ` ${error}`
-//     );
-//   }
-// }
+async ValidarToken(solicitud){
+  let token;
+  try{
+    token =solicitud.headers.authorization.split("")[1];
+  }
+  catch(err){
+    resultado = err;
+  }
+  let Resultado;
+  // Validación del token
+  try {
+    Resultado = await jwt.verify(token, this.PalabraSecreta);
+  } catch(err) {
+    return err;
+  }
+  // ¿El token brindado es del usuario?
+  let Usuario = await prisma.usuarios.findFirst({
+    where: {
+      nombreDelUsuario: Resultado.nombreDelUsuario,
+    },
+  });
+  if (Usuario.Token === token) {
+    return Resultado;
+  } else {
+    return false;
+  }
+};
+
+async DesAutenticacion(nombreDelUsuario) {
+  try {
+    await prisma.usuarios.update({
+      where: { 
+        nombreDelUsuario: nombreDelUsuario,
+      },
+      data: {
+        Token: "Sesión cerrada",
+      },
+    });
+  } catch (err) {
+  console.log(err);
+  }
+}
 
   async Agregar(User, Clave, Rol) {
 
@@ -85,7 +124,7 @@ class Usuarios {
         data: {
           nombreDelUsuario: User,
           claveDelUsuario: Clave,
-          //rol: Rol
+          rol: Rol
         },
       });
       let auditoria;

@@ -30,16 +30,16 @@ class Solicitudes {
     return resultado;
   }
 
-  async Actualizar(solicitudesId, Solicitud, Fecha, Servicio, Solicitante) {
+  async Actualizar(solicitudesId, descripcionDeSolicitid, fechaSolicitud, IdDelservicio, IdDelsolicitante) {
     let resultado;
     try {
       resultado = await prisma.solicitudes.update({
         where: { solicitudesId: parseInt(solicitudesId) },
         data: {
-          descripcionDeSolicitid: Solicitud,
-          fechaSolicitud: Fecha,
-          IdDelservicio: Servicio,
-          IdDelsolicitante: Solicitante,
+          descripcionDeSolicitid: descripcionDeSolicitid,
+          fechaSolicitud: fechaSolicitud,
+          IdDelservicio: IdDelservicio,
+          IdDelsolicitante: IdDelsolicitante
         },
       });
       let auditoria;

@@ -3,8 +3,8 @@ POST http://localhost/Usuarios/autenticar
 Content-Type: application/json
 
 {
-    "nombreDelUsuario": "cisco",
-    "claveDelUsuario": "$2b$10$82udm6lgk7ItzZ7hb2Jt10hkVrOc.IWLHdjZEQui9ydAGQNDLaFiq"
+    "nombreDelUsuario": "admin",
+    "claveDelUsuario": "admin"
 }
 ###
 
@@ -44,7 +44,7 @@ GET http://localhost/Solicitantes/1 HTTP/1.1
 
 ###
 
-GET http://localhost/Solicitudes/1 HTTP/1.1
+GET http://localhost/Solicitudes/14 HTTP/1.1
 
 ###
 
@@ -104,7 +104,6 @@ PUT  http://localhost/Servicios/1 HTTP/1.1
 ###
 
 PUT  http://localhost/Solicitantes/1 HTTP/1.1
-Content-Type: application/json
 
 
 ###
